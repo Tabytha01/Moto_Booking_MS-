@@ -5,3 +5,5 @@
 .env
 .env.local
 npm-debug.log*
+
+/src/generated/prisma

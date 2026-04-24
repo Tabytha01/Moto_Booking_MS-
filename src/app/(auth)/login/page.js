@@ -1,26 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Mail, Lock, ArrowRight, Bike, ShieldCheck, Users, UserCog } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Mail, Lock, ArrowRight, Bike, ShieldCheck, Users, UserCog, CheckCircle2 } from "lucide-react";
 
-export default function LoginPage() {
+function LoginContent() {
   const [role, setRole] = useState("customer"); // customer, rider, admin
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("registered")) {
+      setSuccess("Account created successfully! Please log in.");
+    }
+  }, [searchParams]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
 
-    // Mock authentication logic
-    // In a real app, you would call your API here
-    setTimeout(() => {
-      setIsLoading(false);
-      // Redirect to the appropriate dashboard based on role
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, role }),
+      });
+
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await res.text();
+        console.error("Non-JSON response received:", text);
+        throw new Error(`Server returned an unexpected response (Status: ${res.status}). This often happens if the server is running on a different port (like 3001) but you are using 3000.`);
+      }
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      // Success - Redirect to the appropriate dashboard based on role
       if (role === "admin") {
         router.push("/admin/dashboard");
       } else if (role === "rider") {
@@ -28,7 +54,11 @@ export default function LoginPage() {
       } else {
         router.push("/customer/dashboard");
       }
-    }, 1500);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -93,6 +123,17 @@ export default function LoginPage() {
           </div>
 
           {/* Role Selection Tabs */}
+          {error && (
+            <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-bold animate-in fade-in slide-in-from-top-2">
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="p-4 bg-green-50 border border-green-100 rounded-2xl text-green-600 text-sm font-bold flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+              <CheckCircle2 className="w-4 h-4" />
+              {success}
+            </div>
+          )}
           <div className="flex p-1 bg-gray-200/50 rounded-2xl">
             {["customer", "rider", "admin"].map((r) => (
               <button
@@ -187,6 +228,14 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }
 

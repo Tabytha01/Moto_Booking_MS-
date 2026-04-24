@@ -14,22 +14,49 @@ export default function RegisterPage() {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
 
-    // Mock registration logic
-    setTimeout(() => {
+    // Phone number validation (digits only, max 10)
+    const cleanPhone = formData.phone.replace(/\D/g, "");
+    if (cleanPhone.length > 10) {
+      setError("Phone number cannot exceed 10 digits");
       setIsLoading(false);
-      // Redirect based on role after "registration"
-      if (role === "rider") {
-        router.push("/rider/dashboard");
-      } else {
-        router.push("/customer/dashboard");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, role }),
+      });
+
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await res.text();
+        console.error("Non-JSON response received:", text);
+        throw new Error(`Server returned an unexpected response (Status: ${res.status}). This often happens if the server is running on a different port (like 3001) but you are using 3000.`);
       }
-    }, 1500);
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      // Success - Redirect to login page instead of dashboard
+      router.push("/login?registered=true");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -95,6 +122,11 @@ export default function RegisterPage() {
           </div>
 
           {/* Role Selection */}
+          {error && (
+            <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-bold animate-in fade-in slide-in-from-top-2">
+              {error}
+            </div>
+          )}
           <div className="grid grid-cols-2 gap-4">
             <button
               onClick={() => setRole("customer")}
@@ -159,7 +191,7 @@ export default function RegisterPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    placeholder="+260 9xx xxx xxx"
+                    placeholder="+250 7xx xxx xxx"
                     className="block w-full pl-11 pr-4 py-3 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/5 transition-all duration-200"
                   />
                 </div>
