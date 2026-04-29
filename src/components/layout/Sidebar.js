@@ -19,6 +19,7 @@ const navLinks = {
   rider: [
     { href: "/rider/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/rider/requests", label: "Ride Requests", icon: Bell },
+    { href: "/rider/profile", label: "My Profile", icon: UserCog },
   ],
   customer: [
     { href: "/customer/dashboard", label: "Dashboard", icon: LayoutDashboard },
