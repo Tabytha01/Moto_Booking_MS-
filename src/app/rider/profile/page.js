@@ -20,14 +20,7 @@ export default function RiderProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          router.push("/login");
-          return;
-        }
-
-        const user = JSON.parse(userStr);
-        const res = await fetch(`/api/rider/profile?userId=${user.id}`);
+        const res = await fetch("/api/rider/profile");
         if (!res.ok) throw new Error("Failed to fetch profile");
         
         const data = await res.json();
@@ -54,16 +47,10 @@ export default function RiderProfilePage() {
     setMessage({ type: "", text: "" });
 
     try {
-      const userStr = localStorage.getItem("user");
-      const user = JSON.parse(userStr);
-
       const res = await fetch("/api/rider/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId: user.id,
-          ...formData,
-        }),
+        body: JSON.stringify({ ...formData }),
       });
 
       if (!res.ok) {
@@ -71,12 +58,7 @@ export default function RiderProfilePage() {
         throw new Error(data.message || "Failed to update profile");
       }
 
-      const data = await res.json();
       setMessage({ type: "success", text: "Profile updated successfully!" });
-      
-      // Update localStorage if name changed
-      const updatedUser = { ...user, name: data.user.name };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
       
     } catch (err) {
       setMessage({ type: "error", text: err.message });

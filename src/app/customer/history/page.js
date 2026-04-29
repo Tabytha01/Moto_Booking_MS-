@@ -14,14 +14,7 @@ export default function BookingHistoryPage() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          router.push("/login");
-          return;
-        }
-        const user = JSON.parse(userStr);
-
-        const res = await fetch(`/api/customer/dashboard?userId=${user.id}`);
+        const res = await fetch("/api/customer/dashboard");
         if (!res.ok) throw new Error("Failed to fetch booking history");
         
         const data = await res.json();

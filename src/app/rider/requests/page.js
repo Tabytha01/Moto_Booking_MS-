@@ -14,12 +14,6 @@ export default function RiderRequestsPage() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          router.push("/login");
-          return;
-        }
-
         const res = await fetch("/api/rider/requests");
         if (!res.ok) throw new Error("Failed to fetch ride requests");
         
@@ -41,17 +35,10 @@ export default function RiderRequestsPage() {
   const handleAction = async (bookingId, action) => {
     setIsActionLoading(bookingId);
     try {
-      const userStr = localStorage.getItem("user");
-      const user = JSON.parse(userStr);
-
       const res = await fetch("/api/rider/bookings/action", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          bookingId,
-          riderId: user.id,
-          action,
-        }),
+        body: JSON.stringify({ bookingId, action }),
       });
 
       if (!res.ok) {

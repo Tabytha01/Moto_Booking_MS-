@@ -14,21 +14,7 @@ export default function CustomerDashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          setError("No session found. Redirecting to login...");
-          setTimeout(() => router.push("/login"), 1500);
-          return;
-        }
-
-        const user = JSON.parse(userStr);
-        if (user.role !== "CUSTOMER") {
-          setError("Unauthorized access. Redirecting to login...");
-          setTimeout(() => router.push("/login"), 1500);
-          return;
-        }
-
-        const res = await fetch(`/api/customer/dashboard?userId=${user.id}`);
+        const res = await fetch("/api/customer/dashboard");
         if (!res.ok) throw new Error("Failed to fetch dashboard data");
         
         const dashboardData = await res.json();

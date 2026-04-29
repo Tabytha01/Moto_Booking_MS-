@@ -1,37 +1,36 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { verifyToken } from "@/lib/jwt";
+import { cookies } from "next/headers";
 
 export async function POST(req) {
-  try {
-    const { customerId, pickup, destination } = await req.json();
+  const token = (await cookies()).get("token")?.value;
+  const payload = token ? verifyToken(token) : null;
 
-    if (!customerId || !pickup || !destination) {
-      return NextResponse.json(
-        { message: "Missing required fields" },
-        { status: 400 }
-      );
+  if (!payload || payload.role !== "CUSTOMER") {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { pickup, destination } = await req.json();
+
+    if (!pickup || !destination) {
+      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
     }
 
-    // Create a new booking
     const booking = await prisma.booking.create({
       data: {
-        customerId,
+        customerId: payload.id,
         pickup,
         destination,
         status: "PENDING",
-        fare: Math.floor(Math.random() * 50) + 20, // Dummy fare calculation
+        fare: Math.floor(Math.random() * 50) + 20,
       },
     });
 
-    return NextResponse.json(
-      { message: "Booking successful", booking },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "Booking successful", booking }, { status: 201 });
   } catch (error) {
     console.error("Booking creation error:", error);
-    return NextResponse.json(
-      { message: "An error occurred while creating the booking" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "An error occurred while creating the booking" }, { status: 500 });
   }
 }

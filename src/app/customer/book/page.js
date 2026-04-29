@@ -22,18 +22,10 @@ export default function BookRidePage() {
     setError("");
 
     try {
-      const userStr = localStorage.getItem("user");
-      if (!userStr) {
-        router.push("/login");
-        return;
-      }
-      const user = JSON.parse(userStr);
-
       const res = await fetch("/api/customer/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customerId: user.id,
           pickup: formData.pickup,
           destination: formData.destination,
         }),

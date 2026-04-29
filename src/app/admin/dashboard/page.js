@@ -12,18 +12,6 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          router.push("/login");
-          return;
-        }
-
-        const user = JSON.parse(userStr);
-        if (user.role !== "ADMIN") {
-          router.push("/login");
-          return;
-        }
-
         const res = await fetch("/api/admin/dashboard");
         if (!res.ok) throw new Error("Failed to fetch dashboard data");
         const dashboardData = await res.json();

@@ -19,18 +19,6 @@ export default function BookingsPage() {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          router.push("/login");
-          return;
-        }
-
-        const user = JSON.parse(userStr);
-        if (user.role !== "ADMIN") {
-          router.push("/login");
-          return;
-        }
-
         const res = await fetch("/api/admin/bookings");
         if (!res.ok) throw new Error("Failed to fetch bookings");
         

@@ -10,6 +10,6 @@ export default defineConfig({
     seed: "node prisma/seed.js",
   },
   datasource: {
-    url: "postgresql://postgres:1234@localhost:5432/moto-booking?schema=public",
+    url: process.env["DATABASE_URL"],
   },
 });

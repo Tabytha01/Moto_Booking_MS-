@@ -46,9 +46,6 @@ function LoginContent() {
         throw new Error(data.message || "Login failed");
       }
 
-      // Store user data in localStorage for session management
-      localStorage.setItem("user", JSON.stringify(data.user));
-
       // Success - Redirect to the appropriate dashboard based on role
       if (role === "admin") {
         router.push("/admin/dashboard");

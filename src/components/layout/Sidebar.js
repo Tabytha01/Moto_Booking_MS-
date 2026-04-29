@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { 
   LayoutDashboard, 
   Bike, 
@@ -30,6 +33,12 @@ const navLinks = {
 
 export default function Sidebar({ role }) {
   const links = navLinks[role] || [];
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+  };
   
   return (
     <aside className="w-72 min-h-screen bg-gray-900 text-gray-300 flex flex-col p-6 border-r border-gray-800">
@@ -60,13 +69,13 @@ export default function Sidebar({ role }) {
       </nav>
 
       <div className="mt-auto pt-6 border-t border-gray-800">
-        <Link 
-          href="/login" 
-          className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-400/10 transition-all duration-200 group"
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-400/10 transition-all duration-200 group w-full"
         >
           <LogOut className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           <span className="text-sm font-bold tracking-wide">Logout</span>
-        </Link>
+        </button>
       </div>
     </aside>
   );

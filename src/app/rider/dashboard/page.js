@@ -14,19 +14,7 @@ export default function RiderDashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const userStr = localStorage.getItem("user");
-        if (!userStr) {
-          router.push("/login");
-          return;
-        }
-
-        const user = JSON.parse(userStr);
-        if (user.role !== "RIDER") {
-          router.push("/login");
-          return;
-        }
-
-        const res = await fetch(`/api/rider/dashboard?userId=${user.id}`);
+        const res = await fetch("/api/rider/dashboard");
         if (!res.ok) throw new Error("Failed to fetch dashboard data");
         
         const dashboardData = await res.json();
@@ -44,17 +32,10 @@ export default function RiderDashboard() {
   const handleCompleteRide = async (bookingId) => {
     setIsActionLoading(true);
     try {
-      const userStr = localStorage.getItem("user");
-      const user = JSON.parse(userStr);
-
       const res = await fetch("/api/rider/bookings/action", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          bookingId,
-          riderId: user.id,
-          action: "COMPLETE",
-        }),
+        body: JSON.stringify({ bookingId, action: "COMPLETE" }),
       });
 
       if (!res.ok) {
