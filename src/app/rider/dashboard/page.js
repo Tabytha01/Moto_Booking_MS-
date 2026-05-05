@@ -66,7 +66,7 @@ export default function RiderDashboard() {
   const statsDisplay = [
     { label: "Rides Today", value: stats.ridesToday, icon: Bike, color: "text-blue-600", bg: "bg-blue-50" },
     { label: "Total Rides", value: stats.totalRides, icon: CheckCircle, color: "text-green-600", bg: "bg-green-50" },
-    { label: "Earnings Today", value: `K ${stats.earningsToday.toFixed(2)}`, icon: Wallet, color: "text-orange-600", bg: "bg-orange-50" },
+    { label: "Earnings Today", value: `RWF ${stats.earningsToday.toFixed(2)}`, icon: Wallet, color: "text-orange-600", bg: "bg-orange-50" },
     { label: "Rating", value: `${stats.rating.toFixed(1)} / 5.0`, icon: TrendingUp, color: "text-purple-600", bg: "bg-purple-50" },
   ];
 
@@ -156,7 +156,7 @@ export default function RiderDashboard() {
                   <div className="flex flex-col gap-4 min-w-[200px]">
                     <div className="bg-gray-100 p-6 rounded-3xl text-center mb-2">
                       <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Est. Fare</p>
-                      <p className="text-3xl font-black text-gray-900">K {ride.fare?.toFixed(2)}</p>
+                      <p className="text-3xl font-black text-gray-900">RWF {ride.fare?.toFixed(2)}</p>
                     </div>
                     <button className="bg-gray-900 text-white px-8 py-5 rounded-2xl font-black hover:bg-green-600 transition-all shadow-xl shadow-gray-200 flex items-center justify-center gap-3 group">
                       <MapPin className="w-5 h-5 group-hover:animate-bounce" />
@@ -194,12 +194,12 @@ export default function RiderDashboard() {
           <div className="bg-gray-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
             <div className="relative z-10">
               <p className="text-gray-400 font-black text-xs uppercase tracking-[0.2em] mb-3">Total Earnings</p>
-              <p className="text-5xl font-black mb-10 tracking-tight">K {stats.totalEarnings.toFixed(2)}</p>
+              <p className="text-5xl font-black mb-10 tracking-tight">RWF {stats.totalEarnings.toFixed(2)}</p>
               
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
                   <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">Today</span>
-                  <span className="font-black text-green-400 text-lg">+ K {stats.earningsToday.toFixed(2)}</span>
+                  <span className="font-black text-green-400 text-lg">+ RWF {stats.earningsToday.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between items-center p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
                   <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">Completed</span>

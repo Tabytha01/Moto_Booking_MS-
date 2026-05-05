@@ -113,7 +113,7 @@ export default function BookingsPage() {
                       </div>
                     </td>
                     <td className="px-8 py-5 font-black text-gray-900">
-                      {booking.fare ? `K ${booking.fare.toFixed(2)}` : "N/A"}
+                      {booking.fare ? `RWF ${booking.fare.toFixed(2)}` : "N/A"}
                     </td>
                     <td className="px-8 py-5">
                       <span className={`px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest ${statusColor[booking.status] || "bg-gray-100 text-gray-700"}`}>

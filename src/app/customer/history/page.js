@@ -102,7 +102,7 @@ export default function BookingHistoryPage() {
                 {/* Right: Status & Price */}
                 <div className="text-right flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-center gap-4">
                   <div>
-                    <p className="text-3xl font-black text-gray-900">K {ride.fare?.toFixed(2) || "0.00"}</p>
+                    <p className="text-3xl font-black text-gray-900">RWF {ride.fare?.toFixed(2) || "0.00"}</p>
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Fare</p>
                   </div>
                   <span className={`text-xs font-black uppercase tracking-widest px-6 py-2 rounded-full ${

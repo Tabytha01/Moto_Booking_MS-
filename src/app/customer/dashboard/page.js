@@ -155,7 +155,7 @@ export default function CustomerDashboard() {
                   </div>
 
                   <div className="text-right">
-                    <p className="text-xl font-black text-gray-900">K {ride.fare?.toFixed(2) || "0.00"}</p>
+                    <p className="text-xl font-black text-gray-900">RWF {ride.fare?.toFixed(2) || "0.00"}</p>
                     {ride.status === "COMPLETED" && (
                       <button className="text-xs font-bold text-green-600 hover:underline mt-1">Download Receipt</button>
                     )}
