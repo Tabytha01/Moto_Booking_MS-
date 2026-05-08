@@ -42,7 +42,7 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3">Contact Us</h4>
           <ul className="flex flex-col gap-3 text-sm text-gray-400">
             <li className="flex items-center gap-2"><Mail className="w-4 h-4 text-green-400" /> support@motobook.com</li>
-            <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-green-400" /> +260 97X XXX XXX</li>
+            <li className="flex items-center gap-2"><Phone className="w-4 h-4 text-green-400" /> +260 974 143 618</li>
             <li className="flex items-center gap-2"><MapPin className="w-4 h-4 text-green-400" /> Kigali-Rwanda</li>
           </ul>
         </div>

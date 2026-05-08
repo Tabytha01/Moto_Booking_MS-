@@ -86,8 +86,9 @@ export default function HomePage() {
             className="object-cover object-center"
             priority
             sizes="100vw"
+            quality={100}
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-3xl">
@@ -207,23 +208,6 @@ export default function HomePage() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* ── STATS BANNER ── */}
-      <section className="bg-green-600 py-14 text-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { value: "500+", label: "Rides Completed" },
-            { value: "50+", label: "Active Riders" },
-            { value: "300+", label: "Happy Customers" },
-            { value: "24/7", label: "System Availability" },
-          ].map((s) => (
-            <div key={s.label}>
-              <p className="text-4xl font-extrabold">{s.value}</p>
-              <p className="text-sm mt-1 text-green-100">{s.label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
