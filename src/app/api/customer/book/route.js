@@ -24,7 +24,7 @@ export async function POST(req) {
         pickup,
         destination,
         status: "PENDING",
-        fare: Math.floor(Math.random() * 50) + 20,
+        fare: Math.floor(Math.random() * 501) + 1500, // Random between 1500-2000 RWF
       },
     });
 

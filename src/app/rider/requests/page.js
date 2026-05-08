@@ -92,7 +92,7 @@ export default function RiderRequestsPage() {
           {requests.map((req) => (
             <div key={req.id} className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-xl shadow-gray-200/50 hover:shadow-green-500/10 transition-all group relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8">
-                <p className="text-3xl font-black text-gray-900">K {req.fare?.toFixed(2) || "0.00"}</p>
+                <p className="text-3xl font-black text-gray-900">RWF {req.fare?.toFixed(2) || "0.00"}</p>
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Estimated Fare</p>
               </div>
 
