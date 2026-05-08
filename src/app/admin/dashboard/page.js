@@ -122,7 +122,7 @@ export default function AdminDashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-sm font-black text-gray-900 text-right">
-                        {booking.fare ? `K ${booking.fare.toFixed(2)}` : "N/A"}
+                        {booking.fare ? `RWF ${booking.fare.toFixed(2)}` : "N/A"}
                       </td>
                     </tr>
                   ))

@@ -215,7 +215,7 @@ export default function BookRidePage() {
 
           <div className="bg-gray-100 rounded-[2.5rem] p-8 border border-gray-200">
             <h4 className="text-gray-900 font-black mb-2 uppercase tracking-wider">Estimated Fare</h4>
-            <p className="text-3xl font-black text-green-600 mb-2">RWF 20.00 - RWF 50.00</p>
+            <p className="text-3xl font-black text-green-600 mb-2">RWF 1,500 - RWF 2,000</p>
             <p className="text-gray-500 text-sm font-medium leading-relaxed">Final fare depends on actual distance and traffic conditions.</p>
           </div>
         </div>
