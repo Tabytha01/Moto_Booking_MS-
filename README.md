@@ -14,13 +14,18 @@ A motorcycle booking system built with Next.js 13+, Prisma ORM, and PostgreSQL.
    docker-compose up --build
    ```
 
-2. **Wait for the database to be ready and migrations to run.**
+2. **Wait for the database to be ready (30 seconds)**
 
-3. **Access the application:**
+3. **Seed the database with default users:**
+   ```bash
+   docker-compose exec web npx prisma db seed
+   ```
+
+4. **Access the application:**
    - Web App: http://localhost:3000
    - Database: localhost:5432
 
-### Default Credentials
+### 📋 Default Credentials
 
 After seeding (see below), use these credentials:
 
@@ -36,6 +41,17 @@ After seeding (see below), use these credentials:
 - Mike Rider: `mike@motobook.com` / `rider123` (VERIFIED)
 - Sarah Rider: `sarah@motobook.com` / `rider123` (PENDING)
 - David Rider: `david@motobook.com` / `rider123` (VERIFIED)
+
+## 🔧 GitHub Codespaces
+
+If you're using GitHub Codespaces, see [CODESPACES.md](CODESPACES.md) for detailed setup instructions.
+
+**Quick Codespaces Setup:**
+```bash
+docker-compose up -d
+# Wait 30 seconds
+docker-compose exec web npx prisma db seed
+```
 
 ## 🛠️ Development Setup (Local)
 
