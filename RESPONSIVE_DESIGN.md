@@ -1,6 +1,6 @@
 # Responsive Dashboard Implementation
 
-## ✅ What Was Changed
+##  What Was Changed
 
 ### 1. **Sidebar Component** (`src/components/layout/Sidebar.js`)
 - Added hamburger menu button (Menu/X icons) for mobile
@@ -23,7 +23,7 @@ Files updated:
 - `src/app/customer/layout.js`
 - `src/app/rider/layout.js`
 
-## 📱 How It Works
+##  How It Works
 
 ### Mobile (< 1024px)
 1. Hamburger button appears in top-left corner
@@ -38,23 +38,23 @@ Files updated:
 3. No overlay
 4. Normal padding on content
 
-## 🎨 Features Added
+##  Features Added
 
-- ✅ Smooth slide-in/out animation
-- ✅ Dark overlay on mobile
-- ✅ Active link highlighting (green)
-- ✅ Auto-close on link click (mobile)
-- ✅ Responsive padding for all screen sizes
-- ✅ Fixed hamburger button position
-- ✅ Z-index layering (overlay → sidebar → hamburger)
+-  Smooth slide-in/out animation
+-  Dark overlay on mobile
+-  Active link highlighting (green)
+-  Auto-close on link click (mobile)
+-  Responsive padding for all screen sizes
+-  Fixed hamburger button position
+-  Z-index layering (overlay → sidebar → hamburger)
 
-## 🔧 Tailwind Breakpoints Used
+##  Tailwind Breakpoints Used
 
 - `lg:` = 1024px and above (desktop)
 - `sm:` = 640px and above (tablet)
 - Default = below 640px (mobile)
 
-## 📤 Push Changes
+##  Push Changes
 
 ```bash
 git add .
@@ -62,7 +62,7 @@ git commit -m "Made all dashboards responsive with hamburger menu"
 git push origin main
 ```
 
-## 📥 Pull in Codespaces
+##  Pull in Codespaces
 
 ```bash
 docker-compose down
@@ -70,7 +70,7 @@ git pull origin main
 docker-compose up --build
 ```
 
-## 🧪 Test Responsiveness
+##  Test Responsiveness
 
 1. Open app in browser
 2. Press F12 (Developer Tools)

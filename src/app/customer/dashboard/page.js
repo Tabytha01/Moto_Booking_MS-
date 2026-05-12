@@ -67,10 +67,8 @@ export default function CustomerDashboard() {
           </h2>
           <p className="text-gray-500 font-medium text-lg">Where are we going today?</p>
         </div>
-        <Link href="/customer/book" className="bg-green-600 text-white px-8 py-4 rounded-2xl font-black flex items-center gap-3 hover:bg-gray-900 transition-all shadow-xl shadow-green-600/20 group">
-          <Plus className="w-6 h-6" />
+        <Link href="/customer/book" className="bg-green-600 text-white px-8 py-4 rounded-2xl font-black flex items-center gap-3 hover:bg-gray-900 transition-all shadow-xl shadow-green-600/20">
           Book New Ride
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
 
@@ -106,8 +104,7 @@ export default function CustomerDashboard() {
 
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-black text-gray-900 flex items-center gap-3">
-            <History className="text-green-600 w-6 h-6" />
+          <h3 className="text-2xl font-black text-gray-900">
             Recent Trips
           </h3>
           <Link href="/customer/history" className="text-sm font-bold text-green-600 hover:text-green-700">View All History</Link>

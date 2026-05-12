@@ -80,7 +80,7 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center justify-center text-white">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/moto.jpg"
+            src="/images/hero-moto.svg"
             alt="Motorcycle rider on the road"
             fill
             className="object-cover object-center"
@@ -88,7 +88,7 @@ export default function HomePage() {
             sizes="100vw"
             quality={100}
           />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-3xl">

@@ -88,12 +88,8 @@ export default function RiderDashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {statsDisplay.map((stat) => {
-          const Icon = stat.icon;
           return (
             <div key={stat.label} className="bg-white rounded-[2rem] p-8 shadow-xl shadow-gray-200/50 border border-gray-100 hover:shadow-green-500/10 transition-all duration-300">
-              <div className={`${stat.bg} ${stat.color} w-14 h-14 rounded-2xl flex items-center justify-center mb-6`}>
-                <Icon className="w-7 h-7" />
-              </div>
               <p className="text-4xl font-black text-gray-900">{stat.value}</p>
               <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mt-2">{stat.label}</p>
             </div>
@@ -104,8 +100,7 @@ export default function RiderDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Active Ride Card */}
         <div className="lg:col-span-2 space-y-6">
-          <h3 className="text-2xl font-black text-gray-900 flex items-center gap-3">
-            <Clock className="text-green-600 w-6 h-6" />
+          <h3 className="text-2xl font-black text-gray-900">
             Active Trips
           </h3>
           
@@ -158,8 +153,7 @@ export default function RiderDashboard() {
                       <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Est. Fare</p>
                       <p className="text-3xl font-black text-gray-900">RWF {ride.fare?.toFixed(2)}</p>
                     </div>
-                    <button className="bg-gray-900 text-white px-8 py-5 rounded-2xl font-black hover:bg-green-600 transition-all shadow-xl shadow-gray-200 flex items-center justify-center gap-3 group">
-                      <MapPin className="w-5 h-5 group-hover:animate-bounce" />
+                    <button className="bg-gray-900 text-white px-8 py-5 rounded-2xl font-black hover:bg-green-600 transition-all shadow-xl shadow-gray-200 flex items-center justify-center gap-3">
                       Open Map
                     </button>
                     <button 
@@ -167,7 +161,7 @@ export default function RiderDashboard() {
                       disabled={isActionLoading}
                       className="bg-green-50 text-green-600 px-8 py-5 rounded-2xl font-black hover:bg-green-100 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                     >
-                      {isActionLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <CheckCircle className="w-5 h-5" />}
+                      {isActionLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
                       Complete Ride
                     </button>
                   </div>
@@ -187,8 +181,7 @@ export default function RiderDashboard() {
 
         {/* Earnings Summary Card */}
         <div className="space-y-6">
-          <h3 className="text-2xl font-black text-gray-900 flex items-center gap-3">
-            <TrendingUp className="text-orange-600 w-6 h-6" />
+          <h3 className="text-2xl font-black text-gray-900">
             Wallet
           </h3>
           <div className="bg-gray-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">

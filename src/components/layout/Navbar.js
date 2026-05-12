@@ -24,20 +24,20 @@ export default function Navbar() {
           <li><a href="#contact" className="hover:text-green-600 transition">Contact</a></li>
         </ul>
 
-        {/* Auth Buttons */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link href="/login" className="text-sm font-semibold text-green-700 hover:underline">
+        {/* Right Side - Auth Buttons & Mobile Hamburger */}
+        <div className="flex items-center gap-3">
+          <Link href="/login" className="hidden md:block text-sm font-semibold text-green-700 hover:underline">
             Login
           </Link>
-          <Link href="/register" className="bg-green-600 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-700 transition">
+          <Link href="/register" className="hidden md:block bg-green-600 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-700 transition">
             Get Started
           </Link>
+          
+          {/* Mobile Hamburger */}
+          <button className="md:hidden text-gray-700" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-
-        {/* Mobile Hamburger */}
-        <button className="md:hidden text-gray-700" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
 
       {/* Mobile Menu */}

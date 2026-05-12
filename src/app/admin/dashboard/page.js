@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Users, Bike, Calendar, CheckCircle, TrendingUp, AlertCircle, ArrowUpRight, Loader2 } from "lucide-react";
+import { Users, Bike, Calendar, CheckCircle, TrendingUp, AlertCircle, ArrowUpRight, Loader2, Download } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function AdminDashboard() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showReportMenu, setShowReportMenu] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -25,6 +26,41 @@ export default function AdminDashboard() {
 
     fetchData();
   }, [router]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showReportMenu && !event.target.closest('.report-menu-container')) {
+        setShowReportMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showReportMenu]);
+
+  const downloadReport = async (type, range) => {
+    try {
+      setShowReportMenu(false);
+      const response = await fetch(`/api/admin/reports?type=${type}&range=${range}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to generate report');
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${type}-report-${range}-${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Download error:', error);
+      alert('Failed to download report. Please try again.');
+    }
+  };
 
   if (isLoading) {
     return (
@@ -62,23 +98,80 @@ export default function AdminDashboard() {
           <h2 className="text-3xl font-black text-gray-900 tracking-tight">System Overview</h2>
           <p className="text-gray-500 font-medium">Real-time platform performance and management.</p>
         </div>
-        <button className="bg-gray-900 text-white px-6 py-3 rounded-2xl font-bold text-sm hover:bg-green-600 transition-all flex items-center gap-2 shadow-lg shadow-gray-200">
-          <Calendar className="w-4 h-4" />
-          Generate Report
-        </button>
+        <div className="relative report-menu-container">
+          <button 
+            onClick={() => setShowReportMenu(!showReportMenu)}
+            className="bg-gray-900 text-white px-6 py-3 rounded-2xl font-bold text-sm hover:bg-green-600 transition-all flex items-center gap-2 shadow-lg shadow-gray-200"
+          >
+            Download Report
+          </button>
+          
+          {showReportMenu && (
+            <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 z-50">
+              <div className="px-4 py-2 border-b border-gray-100">
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Select Report Type</p>
+              </div>
+              <button
+                onClick={() => downloadReport('bookings', 'all')}
+                className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors"
+              >
+                <p className="font-bold text-sm text-gray-900">All Bookings</p>
+                <p className="text-xs text-gray-500">Complete booking history</p>
+              </button>
+              <button
+                onClick={() => downloadReport('riders', 'all')}
+                className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors"
+              >
+                <p className="font-bold text-sm text-gray-900">All Riders</p>
+                <p className="text-xs text-gray-500">Rider details & earnings</p>
+              </button>
+              <button
+                onClick={() => downloadReport('customers', 'all')}
+                className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors"
+              >
+                <p className="font-bold text-sm text-gray-900">All Customers</p>
+                <p className="text-xs text-gray-500">Customer activity report</p>
+              </button>
+              <button
+                onClick={() => downloadReport('revenue', 'all')}
+                className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors"
+              >
+                <p className="font-bold text-sm text-gray-900">Revenue Report</p>
+                <p className="text-xs text-gray-500">Completed rides & earnings</p>
+              </button>
+              <div className="border-t border-gray-100 mt-2 pt-2 px-4 pb-2">
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Date Range</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => downloadReport('bookings', 'today')}
+                    className="text-xs font-bold text-gray-700 hover:text-green-600 py-1"
+                  >
+                    Today
+                  </button>
+                  <button
+                    onClick={() => downloadReport('bookings', 'week')}
+                    className="text-xs font-bold text-gray-700 hover:text-green-600 py-1"
+                  >
+                    This Week
+                  </button>
+                  <button
+                    onClick={() => downloadReport('bookings', 'month')}
+                    className="text-xs font-bold text-gray-700 hover:text-green-600 py-1"
+                  >
+                    This Month
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {statsDisplay.map((stat) => {
-          const Icon = stat.icon;
           return (
             <div key={stat.label} className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 group hover:border-green-100 transition-all duration-300">
-              <div className="flex justify-between items-start mb-4">
-                <div className={`${stat.bg} ${stat.color} w-12 h-12 rounded-2xl flex items-center justify-center`}>
-                  <Icon className="w-6 h-6" />
-                </div>
-              </div>
               <p className="text-3xl font-black text-gray-900">{stat.value}</p>
               <p className="text-sm font-bold text-gray-400 uppercase tracking-wider mt-1">{stat.label}</p>
             </div>
@@ -141,8 +234,7 @@ export default function AdminDashboard() {
         {/* System Alerts */}
         <div className="bg-gray-900 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
           <div className="relative z-10">
-            <h3 className="text-xl font-black mb-6 flex items-center gap-2">
-              <AlertCircle className="text-orange-400 w-5 h-5" />
+            <h3 className="text-xl font-black mb-6">
               System Alerts
             </h3>
             <div className="space-y-4">

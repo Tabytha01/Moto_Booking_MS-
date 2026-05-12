@@ -1,0 +1,125 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#374151;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bikeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky Background -->
+  <rect width="1920" height="1080" fill="url(#skyGradient)"/>
+  
+  <!-- Stars -->
+  <circle cx="200" cy="150" r="2" fill="white" opacity="0.6"/>
+  <circle cx="400" cy="100" r="1.5" fill="white" opacity="0.4"/>
+  <circle cx="600" cy="180" r="2" fill="white" opacity="0.7"/>
+  <circle cx="800" cy="120" r="1" fill="white" opacity="0.5"/>
+  <circle cx="1000" cy="90" r="2" fill="white" opacity="0.6"/>
+  <circle cx="1200" cy="160" r="1.5" fill="white" opacity="0.4"/>
+  <circle cx="1400" cy="110" r="2" fill="white" opacity="0.7"/>
+  <circle cx="1600" cy="140" r="1" fill="white" opacity="0.5"/>
+  <circle cx="1800" cy="100" r="2" fill="white" opacity="0.6"/>
+  
+  <!-- City Skyline Silhouette -->
+  <rect x="0" y="400" width="300" height="280" fill="#1e293b" opacity="0.8"/>
+  <rect x="320" y="350" width="200" height="330" fill="#1e293b" opacity="0.7"/>
+  <rect x="540" y="420" width="180" height="260" fill="#1e293b" opacity="0.8"/>
+  <rect x="740" y="380" width="220" height="300" fill="#1e293b" opacity="0.7"/>
+  <rect x="980" y="400" width="160" height="280" fill="#1e293b" opacity="0.8"/>
+  <rect x="1160" y="360" width="200" height="320" fill="#1e293b" opacity="0.7"/>
+  <rect x="1380" y="390" width="180" height="290" fill="#1e293b" opacity="0.8"/>
+  <rect x="1580" y="370" width="340" height="310" fill="#1e293b" opacity="0.7"/>
+  
+  <!-- Building Windows -->
+  <g opacity="0.6">
+    <rect x="50" y="450" width="20" height="30" fill="#fbbf24"/>
+    <rect x="90" y="450" width="20" height="30" fill="#fbbf24"/>
+    <rect x="130" y="450" width="20" height="30" fill="#fbbf24"/>
+    <rect x="370" y="400" width="20" height="30" fill="#fbbf24"/>
+    <rect x="410" y="400" width="20" height="30" fill="#fbbf24"/>
+    <rect x="450" y="400" width="20" height="30" fill="#fbbf24"/>
+    <rect x="1220" y="410" width="20" height="30" fill="#fbbf24"/>
+    <rect x="1260" y="410" width="20" height="30" fill="#fbbf24"/>
+    <rect x="1700" y="420" width="20" height="30" fill="#fbbf24"/>
+    <rect x="1740" y="420" width="20" height="30" fill="#fbbf24"/>
+  </g>
+  
+  <!-- Road -->
+  <path d="M 0 680 L 1920 680 L 1920 1080 L 0 1080 Z" fill="url(#roadGradient)"/>
+  
+  <!-- Road Lines -->
+  <rect x="100" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="280" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="460" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="640" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="820" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="1000" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="1180" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="1360" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="1540" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  <rect x="1720" y="750" width="120" height="8" fill="#fbbf24" opacity="0.8"/>
+  
+  <!-- Motorcycle -->
+  <g transform="translate(1200, 600)">
+    <!-- Back Wheel -->
+    <circle cx="0" cy="80" r="45" fill="#1f2937" stroke="#10b981" stroke-width="4"/>
+    <circle cx="0" cy="80" r="25" fill="#374151"/>
+    <circle cx="0" cy="80" r="10" fill="#10b981"/>
+    
+    <!-- Front Wheel -->
+    <circle cx="180" cy="80" r="45" fill="#1f2937" stroke="#10b981" stroke-width="4"/>
+    <circle cx="180" cy="80" r="25" fill="#374151"/>
+    <circle cx="180" cy="80" r="10" fill="#10b981"/>
+    
+    <!-- Frame -->
+    <path d="M 0 80 L 60 40 L 120 20 L 180 80" stroke="url(#bikeGradient)" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M 60 40 L 60 80" stroke="url(#bikeGradient)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 120 20 L 100 80" stroke="url(#bikeGradient)" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Seat -->
+    <ellipse cx="80" cy="25" rx="35" ry="12" fill="#1f2937" stroke="#10b981" stroke-width="2"/>
+    
+    <!-- Fuel Tank -->
+    <ellipse cx="110" cy="35" rx="30" ry="20" fill="url(#bikeGradient)"/>
+    <ellipse cx="110" cy="35" rx="20" ry="12" fill="#059669" opacity="0.6"/>
+    
+    <!-- Handlebars -->
+    <path d="M 150 25 L 180 15 M 150 25 L 180 35" stroke="#374151" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="180" cy="15" r="5" fill="#10b981"/>
+    <circle cx="180" cy="35" r="5" fill="#10b981"/>
+    
+    <!-- Headlight -->
+    <circle cx="190" cy="50" r="12" fill="#fbbf24" opacity="0.9"/>
+    <circle cx="190" cy="50" r="8" fill="#fde047"/>
+    
+    <!-- Light Beam -->
+    <path d="M 202 50 L 350 30 L 350 70 Z" fill="#fbbf24" opacity="0.2"/>
+    
+    <!-- Exhaust -->
+    <rect x="20" y="85" width="60" height="8" rx="4" fill="#374151"/>
+    <ellipse cx="15" cy="89" rx="8" ry="6" fill="#1f2937"/>
+    
+    <!-- Speed Lines -->
+    <line x1="-50" y1="30" x2="-10" y2="30" stroke="#10b981" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+    <line x1="-60" y1="50" x2="-15" y2="50" stroke="#10b981" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+    <line x1="-45" y1="70" x2="-10" y2="70" stroke="#10b981" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Green Accent Glow -->
+  <ellipse cx="1380" cy="680" rx="200" ry="40" fill="#10b981" opacity="0.15"/>
+  
+  <!-- Additional Motion Lines -->
+  <line x1="900" y1="650" x2="1000" y2="650" stroke="#10b981" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+  <line x1="850" y1="670" x2="980" y2="670" stroke="#10b981" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+  <line x1="920" y1="690" x2="1020" y2="690" stroke="#10b981" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+</svg>
