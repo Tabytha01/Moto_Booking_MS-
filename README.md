@@ -2,7 +2,7 @@
 
 A motorcycle booking system built with Next.js 13+, Prisma ORM, and PostgreSQL.
 
-## 🚀 Quick Start with Docker
+##  Quick Start with Docker
 
 ### Prerequisites
 - Docker and Docker Compose installed
@@ -25,7 +25,7 @@ A motorcycle booking system built with Next.js 13+, Prisma ORM, and PostgreSQL.
    - Web App: http://localhost:3000
    - Database: localhost:5432
 
-### 📋 Default Credentials
+###  Default Credentials
 
 After seeding (see below), use these credentials:
 
@@ -53,7 +53,7 @@ docker-compose up -d
 docker-compose exec web npx prisma db seed
 ```
 
-## 🛠️ Development Setup (Local)
+##  Development Setup (Local)
 
 ### Prerequisites
 - Node.js 20+
@@ -91,7 +91,7 @@ docker-compose exec web npx prisma db seed
 6. **Open your browser:**
    Navigate to http://localhost:3000
 
-## 📦 Docker Commands
+##  Docker Commands
 
 ### Stop the containers
 ```bash
@@ -113,7 +113,7 @@ docker-compose logs -f
 docker-compose up --build --force-recreate
 ```
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 src/
@@ -129,7 +129,7 @@ src/
     └── prisma.js        # Prisma client
 ```
 
-## 🔧 Tech Stack
+##  Tech Stack
 
 - **Framework:** Next.js 15+ (App Router)
 - **ORM:** Prisma 7+
@@ -138,6 +138,6 @@ src/
 - **Icons:** Lucide React
 - **Auth:** Custom JWT/Local Storage
 
-## 📝 License
+##  License
 
 MIT

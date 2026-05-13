@@ -97,7 +97,7 @@ export default function BookRidePage() {
                     value={formData.pickup}
                     onChange={handleChange}
                     required
-                    placeholder="e.g. Kigali CBD"
+                    placeholder="e.g. Down Town, Kigali"
                     className="block w-full pl-11 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/5 transition-all duration-200"
                   />
                 </div>
@@ -115,7 +115,7 @@ export default function BookRidePage() {
                     value={formData.destination}
                     onChange={handleChange}
                     required
-                    placeholder="e.g. Chilenje"
+                    placeholder="e.g. KCC, Kigali"
                     className="block w-full pl-11 pr-4 py-4 bg-gray-50 border-2 border-transparent rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-600/5 transition-all duration-200"
                   />
                 </div>
@@ -215,7 +215,7 @@ export default function BookRidePage() {
 
           <div className="bg-gray-100 rounded-[2.5rem] p-8 border border-gray-200">
             <h4 className="text-gray-900 font-black mb-2 uppercase tracking-wider">Estimated Fare</h4>
-            <p className="text-3xl font-black text-green-600 mb-2">RWF 1,500 - RWF 2,000</p>
+            <p className="text-3xl font-black text-green-600 mb-2">RWF 500 MIN</p>
             <p className="text-gray-500 text-sm font-medium leading-relaxed">Final fare depends on actual distance and traffic conditions.</p>
           </div>
         </div>

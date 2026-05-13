@@ -1,4 +1,4 @@
-# 🚀 MotoBook - Codespaces Setup Guide
+#  MotoBook - Codespaces Setup Guide
 
 ## Quick Start in Codespaces
 
@@ -26,7 +26,7 @@ Open the forwarded port 3000 in your browser.
 
 ---
 
-## 📋 Default Login Credentials
+##  Default Login Credentials
 
 ### Admin
 - **Email:** `admin@motobook.com`
@@ -73,7 +73,7 @@ docker-compose exec web npx prisma db seed
 
 ---
 
-## 📦 Common Commands
+##  Common Commands
 
 ### Stop Containers
 ```bash
@@ -97,7 +97,7 @@ docker-compose exec web npx prisma migrate deploy
 
 ---
 
-## 🎯 Development Workflow
+##  Development Workflow
 
 1. Make code changes in Codespaces
 2. Changes auto-reload (Next.js hot reload)
@@ -107,7 +107,7 @@ docker-compose exec web npx prisma migrate deploy
 
 ---
 
-## ⚠️ Important Notes
+## Important Notes
 
 - **Always seed the database** after creating a new Codespace
 - Database data is **not persistent** across Codespaces
@@ -116,7 +116,7 @@ docker-compose exec web npx prisma migrate deploy
 
 ---
 
-## 🆘 Still Having Issues?
+##  Still Having Issues?
 
 1. Check Docker is running: `docker ps`
 2. Check logs: `docker-compose logs`

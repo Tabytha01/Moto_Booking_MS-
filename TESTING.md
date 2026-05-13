@@ -1,4 +1,4 @@
-# 🧪 Testing Guide - MotoBook
+#  Testing Guide - MotoBook
 
 ## Quick Start
 
@@ -31,7 +31,7 @@ npm run test:watch
 
 ---
 
-## 📊 Test Coverage
+##  Test Coverage
 
 Current test coverage targets:
 - **Overall Coverage:** ≥ 80%
@@ -48,7 +48,7 @@ npm test -- --coverage
 
 ---
 
-## 📁 Test Structure
+##  Test Structure
 
 ```
 __tests__/
@@ -61,7 +61,7 @@ __tests__/
 
 ---
 
-## ✅ Test Cases Summary
+##  Test Cases Summary
 
 ### Authentication Module (10 tests)
 - User registration (valid/invalid data)
@@ -101,7 +101,7 @@ __tests__/
 
 ---
 
-## 🎯 Testing Best Practices
+##  Testing Best Practices
 
 ### 1. Write Tests First (TDD)
 ```javascript
@@ -115,10 +115,10 @@ it('should create booking with valid data', () => {
 
 ### 2. Use Descriptive Test Names
 ```javascript
-// ✅ Good
+//  Good
 it('should return 401 when password is incorrect')
 
-// ❌ Bad
+//  Bad
 it('test login')
 ```
 
@@ -151,7 +151,7 @@ jest.mock('bcryptjs');
 
 ---
 
-## 🐛 Debugging Tests
+##  Debugging Tests
 
 ### Run Single Test File
 ```bash
@@ -183,7 +183,7 @@ Add to `.vscode/launch.json`:
 
 ---
 
-## 📈 Continuous Integration
+##  Continuous Integration
 
 Tests run automatically on:
 - Every commit (pre-commit hook)
@@ -198,7 +198,7 @@ GitHub Actions workflow:
 
 ---
 
-## 📝 Writing New Tests
+##  Writing New Tests
 
 ### 1. Create Test File
 ```bash
@@ -225,7 +225,7 @@ npm test myfeature.test.js
 
 ---
 
-## 🔍 Test Reports
+##  Test Reports
 
 ### Coverage Report
 ```bash
@@ -245,7 +245,7 @@ npm test -- --reporters=default --reporters=jest-junit
 
 ---
 
-## 🚀 Performance Testing
+##  Performance Testing
 
 ### Measure Test Execution Time
 ```bash
@@ -266,7 +266,7 @@ it.skip('slow test', () => {
 
 ---
 
-## 📚 Resources
+##  Resources
 
 - [Jest Documentation](https://jestjs.io/docs/getting-started)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
@@ -274,17 +274,17 @@ it.skip('slow test', () => {
 
 ---
 
-## ✨ Test Status
+##  Test Status
 
 | Module | Tests | Passing | Coverage |
 |--------|-------|---------|----------|
-| Authentication | 10 | ✅ 10 | 85% |
-| Booking | 10 | ✅ 10 | 80% |
-| Customer | 10 | ✅ 10 | 75% |
-| Rider | 10 | ✅ 10 | 78% |
-| Admin | 12 | ✅ 12 | 82% |
-| Database | 10 | ✅ 10 | 90% |
-| **Total** | **52** | **✅ 52** | **82%** |
+| Authentication | 10 |  10 | 85% |
+| Booking | 10 |  10 | 80% |
+| Customer | 10 |  10 | 75% |
+| Rider | 10 |  10 | 78% |
+| Admin | 12 |  12 | 82% |
+| Database | 10 |  10 | 90% |
+| **Total** | **52** | ** 52** | **82%** |
 
 ---
 
